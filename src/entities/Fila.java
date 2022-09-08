@@ -9,7 +9,7 @@ public class Fila {
 		return tamanho;
 	}
 	
-	public int acrescentarFila(String valor) {
+	public int enfileirar(String valor) {
 		No novoNo = new No();
 		novoNo.setDado(valor);
 		if(primeiroNo == null) {
@@ -23,17 +23,42 @@ public class Fila {
 		return 1;
 	}
 	
-	public static void main(String[] args) {
-		Fila fila = new Fila();
-		fila.acrescentarFila("A");
-		fila.acrescentarFila("B");
-		fila.acrescentarFila("C");
-		No auxiliar = fila.primeiroNo;
-		
-		while(auxiliar != null) {
-			System.out.println(auxiliar.getDado());
+	public String toString() {
+		No auxiliar = primeiroNo;
+		String retorno = "";
+		for(int i = tamanho; i > 0; i--) {
+			retorno += String.format("%d", i)
+					+ " - "
+					+ auxiliar.getDado()
+					+ "\n";
 			auxiliar = auxiliar.getProximoNo();
 		}
+		return retorno;
+	}
+	
+	public String desenfileirar() {
+		String dado = "";
+		if(tamanho == 1) {
+			dado = primeiroNo.getDado();
+			primeiroNo = null;
+			tamanho--;
+		}else{
+			return "Daqui a pouco pronto";
+		}
+		return dado;
+	}
+	
+	public static void main(String[] args) {
+		Fila fila = new Fila();
+		fila.enfileirar("A");
+		System.out.println(fila);
+		System.out.println();
+		System.out.println(fila.desenfileirar());
+		System.out.println();
+		fila.enfileirar("A");
+		fila.enfileirar("B");
+		System.out.println(fila);
+		System.out.println(fila.desenfileirar());
 	}
 	
 }
