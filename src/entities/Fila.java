@@ -43,7 +43,17 @@ public class Fila {
 			primeiroNo = null;
 			tamanho--;
 		}else{
-			return "Daqui a pouco pronto";
+			No auxiliar = primeiroNo;
+			No anterior;
+			for(int i = 0; i < tamanho-2 ; i++) {
+				auxiliar = auxiliar.getProximoNo();
+			}
+			anterior = auxiliar;
+			auxiliar = auxiliar.getProximoNo();
+			dado = auxiliar.getDado();
+			auxiliar = null;
+			anterior.setProximoNo(null);
+			tamanho--;
 		}
 		return dado;
 	}
@@ -51,13 +61,11 @@ public class Fila {
 	public static void main(String[] args) {
 		Fila fila = new Fila();
 		fila.enfileirar("A");
-		System.out.println(fila);
-		System.out.println();
-		System.out.println(fila.desenfileirar());
-		System.out.println();
-		fila.enfileirar("A");
 		fila.enfileirar("B");
+		fila.enfileirar("C");
 		System.out.println(fila);
+		System.out.println(fila.desenfileirar());
+		System.out.println(fila.desenfileirar());
 		System.out.println(fila.desenfileirar());
 	}
 	
